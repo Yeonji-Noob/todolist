@@ -97,6 +97,11 @@ button {
   padding-left: 10px;
 }
 
+.done {
+
+  text-decoration: line-through;
+
+}
 
 .check-button {background-image: url(../images/nnnoise.svg);}
 
