@@ -16,14 +16,13 @@
 
 /*-----------------------------------------------*/
 
-let taskInput = document.getElementById("task-input");
 
 // + 버튼
 let addButton = document.getElementById("add-button");
 
 // 빈 배열에다가 task-input의 값을 push 해 줄 것임
-// TS2339 오류때문에 type alias(타입변수) 사용해줌
 
+// TS2339 오류때문에 type alias(타입변수) 사용해줌
 type Task = {
   id: string | number;
   taskContent: string;
@@ -32,42 +31,59 @@ type Task = {
 
 let tabs = document.querySelectorAll(".task-tabs div");
 
-let mode = "all";
+let taskList: Task[] = [];
 
-let filterList: any = [];
+let selectMenu = "all";
 
-for (let i = 1; i < tabs.length; i++) {
-  //필터링 해주는 함수
-  let filter = (event: Event) => {
-    mode = (event.target as HTMLElement).id;
-    if (mode == "all") {
-      render();
-    } else if (mode == "progress") {
-      for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].isComplete == false) {
-          filterList.push(taskList[i]);
-        }
-      }
+let filterList: Task[] = [];
 
-      render();
 
-    } else if (mode == "done") {
-      for (let i = 0; i < taskList.length; i++) {
-        if (taskList[i].isComplete == true) {
-          filterList.push(taskList[i]);
-        }
-      }
 
-    }
+/*------------------------*/
 
-    console.log(filterList);
-  };
+/*------------------------*/
+
+
+
+
+for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) {
     filter(event);
   });
 }
 
-let taskList: Task[] = [];
+//필터링 해주는 함수
+let filter = (event: Event) => {
+  selectMenu = (event.target as HTMLElement).id;
+
+
+  filterList = [];
+  if (selectMenu == "all") {
+    render();
+  } else if (selectMenu == "progress") {
+    for (let i = 0; i < taskList.length; i++) {
+      
+      if (taskList[i].isComplete == false) {
+        filterList.push(taskList[i]);
+      }
+    }
+
+    render();
+
+
+  } else if (selectMenu == "done") {
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].isComplete) {
+        filterList.push(taskList[i]);
+      }
+    }
+    render();
+  }
+
+  console.log(filterList);
+};
+
+// 리스트 값을 추가해줌
 let addTask = () => {
   let taskInput = document.getElementById("task-input") as HTMLInputElement;
 
@@ -79,18 +95,23 @@ let addTask = () => {
 
   taskList.push(task);
   console.log(taskList);
+
   render();
 };
 
 addButton?.addEventListener("click", addTask);
 
+
+
+
+
 // 화면에 그려주는 함수 (UI 업데이트)
 let render = () => {
-  //mode 값에 따라 list를 동적으로 할당
-  let list: any = [];
-  if (mode == "all") {
+  //selectMenu 값에 따라 list를 동적으로 할당
+  let list = [];
+  if (selectMenu === "all") {
     list = taskList;
-  } else if (mode == "progress" || mode == "done") {
+  } else {
     list = filterList;
   }
 
@@ -124,9 +145,8 @@ let render = () => {
   }
 };
 
-// 버튼 토글
+// 체크 버튼 토글
 let toggle = (id: string | number) => {
-  console.log("id:", id);
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList[i].isComplete = !taskList[i].isComplete; //반대값을 넣기 위해 ! 사용
@@ -137,9 +157,8 @@ let toggle = (id: string | number) => {
   render();
 };
 
-// 데이터에 고유 ID값 부여
-let randomId = () => "_" + Math.random().toString(36).substr(2, 9);
 
+// 삭제 버튼
 let deleteTask = (id: string | number) => {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
@@ -150,3 +169,9 @@ let deleteTask = (id: string | number) => {
 
   render();
 };
+
+
+
+// 데이터에 고유 ID값 부여
+let randomId = () => "_" + Math.random().toString(36).substr(2, 9);
+
