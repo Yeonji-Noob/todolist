@@ -71,7 +71,7 @@ button {
   position: relative;
   padding: 1em;
   background-image: url(../images/nnnoise.svg);
-
+  cursor: pointer;
 }
 
 #underline {
@@ -88,26 +88,31 @@ button {
 
 .task {
   display: flex;
-  justify-content: space-between;
   background-image: url(../images/nnnoise.svg);
+  justify-content: space-between;
   line-height: 40px;
   border-bottom: 1px #8299FF solid;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+
+.highlight {
+  height: 40px;
+  width: 400px;
+  background-color: rgb(255, 243, 133);
 }
 
 .done {
-
+  background-color: transparent;
+  position: absolute;
   text-decoration: line-through;
-
 }
 
 .check-button {background-image: url(../images/nnnoise.svg);}
 
 .check-button button {
   position: relative;
-
   width: 120px;
   height: 40px;
   margin-right: 20px;

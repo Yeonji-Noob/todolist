@@ -30,8 +30,44 @@ type Task = {
   isComplete: boolean;
 };
 
-let taskList: Task[] = [];
+let tabs = document.querySelectorAll(".task-tabs div");
 
+let mode = "all";
+
+let filterList: any = [];
+
+for (let i = 1; i < tabs.length; i++) {
+  //필터링 해주는 함수
+  let filter = (event: Event) => {
+    mode = (event.target as HTMLElement).id;
+    if (mode == "all") {
+      render();
+    } else if (mode == "progress") {
+      for (let i = 0; i < taskList.length; i++) {
+        if (taskList[i].isComplete == false) {
+          filterList.push(taskList[i]);
+        }
+      }
+
+      render();
+
+    } else if (mode == "done") {
+      for (let i = 0; i < taskList.length; i++) {
+        if (taskList[i].isComplete == true) {
+          filterList.push(taskList[i]);
+        }
+      }
+
+    }
+
+    console.log(filterList);
+  };
+  tabs[i].addEventListener("click", function (event) {
+    filter(event);
+  });
+}
+
+let taskList: Task[] = [];
 let addTask = () => {
   let taskInput = document.getElementById("task-input") as HTMLInputElement;
 
@@ -48,25 +84,35 @@ let addTask = () => {
 
 addButton?.addEventListener("click", addTask);
 
+// 화면에 그려주는 함수 (UI 업데이트)
 let render = () => {
+  //mode 값에 따라 list를 동적으로 할당
+  let list: any = [];
+  if (mode == "all") {
+    list = taskList;
+  } else if (mode == "progress" || mode == "done") {
+    list = filterList;
+  }
+
   let resultHTML: string = "";
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].isComplete == true) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].isComplete == true) {
       resultHTML += `<div class="task">
-      <div class="done">${taskList[i].taskContent}</div>
-      <div class="check-button">
-        <button onclick="toggle('${taskList[i].id}')">Check</button>
-        <button onclick="deleteTask()">Delete</button>
+        <div class="highlight"></div>
+        <div class="done">${list[i].taskContent}</div>
+        <div class="check-button">
+          <button onclick="toggle('${list[i].id}')">Check</button>
+          <button onclick="deleteTask('${list[i].id}')">Delete</button>
         </div>
       </div>`;
     } else {
       resultHTML += `<div class="task">
-      <div>${taskList[i].taskContent}</div>
-      <div class="check-button">
-        <button onclick="toggle('${taskList[i].id}')">Check</button>
-        <button onclick="deleteTask()">Delete</button>
-      </div>
-    </div>`;
+        <div>${list[i].taskContent}</div>
+        <div class="check-button">
+          <button onclick="toggle('${list[i].id}')">Check</button>
+          <button onclick="deleteTask('${list[i].id}')">Delete</button>
+        </div>
+      </div>`;
     }
   }
 
@@ -78,6 +124,7 @@ let render = () => {
   }
 };
 
+// 버튼 토글
 let toggle = (id: string | number) => {
   console.log("id:", id);
   for (let i = 0; i < taskList.length; i++) {
@@ -93,8 +140,13 @@ let toggle = (id: string | number) => {
 // 데이터에 고유 ID값 부여
 let randomId = () => "_" + Math.random().toString(36).substr(2, 9);
 
-let deleteTask = () => {
+let deleteTask = (id: string | number) => {
+  for (let i = 0; i < taskList.length; i++) {
+    if (taskList[i].id == id) {
+      taskList.splice(i, 1);
+      break;
+    }
+  }
 
-  
-
-}
+  render();
+};
