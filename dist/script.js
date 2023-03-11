@@ -15,11 +15,20 @@ let tabs = document.querySelectorAll(".task-tabs div");
 let taskList = [];
 let selectMenu = "all";
 let filterList = [];
+let underLine = document.getElementById("underline");
 /*------------------------*/
 /*------------------------*/
+// tabs.forEach(menu => menu.addEventListener("click", ))
 for (let i = 0; i < tabs.length; i++) {
     tabs[i].addEventListener("click", function (event) {
         filter(event);
+        let lineDraw = () => {
+            underLine.style.left = event.currentTarget.offsetLeft + "px";
+            underLine.style.width = event.currentTarget.offsetWidth + "px";
+            underLine.style.top =
+                event.currentTarget.offsetTop + event.currentTarget.offsetHeight - 5 + "px";
+        };
+        lineDraw();
     });
 }
 //필터링 해주는 함수

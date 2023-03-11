@@ -72,6 +72,7 @@ button {
   padding: 1em;
   background-image: url(../images/nnnoise.svg);
   cursor: pointer;
+  user-select: none;
 }
 
 #underline {
@@ -80,10 +81,11 @@ button {
   border-bottom: 0px;
   position: absolute;
   z-index: 10;
-  width: 50px;
+  width: 0;
   left: 22px;
   top: 183px;
-  padding: 0px;
+  padding: 0;
+  transition: all 400ms;
 }
 
 .task {
@@ -98,8 +100,10 @@ button {
 }
 
 .highlight {
+  position: relative;
+  z-index: 0;
   height: 40px;
-  width: 400px;
+  width: 40vw;
   background-color: rgb(255, 243, 133);
 }
 
@@ -109,13 +113,28 @@ button {
   text-decoration: line-through;
 }
 
-.check-button {background-image: url(../images/nnnoise.svg);}
+.check-button {
+  background-image: url(../images/nnnoise.svg);
+}
 
 .check-button button {
   position: relative;
   width: 120px;
   height: 40px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
-.check-button button:hover {background-image: url(../images/hover.svg);}
+.check-button button:hover {
+  background-image: url(../images/hover.svg);
+}
+
+
+@media screen and (min-width: 627px) and (max-width: 767px) {
+  
+  .highlight { 
+
+    width: 30vw;
+
+  }
+
+}
