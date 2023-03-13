@@ -2,11 +2,12 @@
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-
   overflow: hidden;
 }
 
-.background {  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23904aff' fill-opacity='0.51'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+.background {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23904aff' fill-opacity='0.51'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
 
 .container {
   position: relative;
@@ -15,21 +16,25 @@
   width: 1000px;
   top: 20px;
   min-height: 100vh;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .container h1 {
   position: relative;
   top: 10px;
   font-weight: bold;
-  background-color: #8299FF;
+  background-color: #8299ff;
   background-image: url(../images/h1.svg);
   color: #ffffff;
   padding: 20px;
+  user-select: none;
 }
 
-
-.input-area button {position: relative; top: -2px;}
+.input-area button {
+  position: relative;
+  top: -2px;
+}
 
 input {
   margin-top: 10px;
@@ -60,10 +65,9 @@ button {
   opacity: 0.5;
 }
 
-
 .task-tabs {
   display: flex;
-  border-bottom: 1px #8299FF solid;
+  border-bottom: 1px #8299ff solid;
   padding-left: 10px;
 }
 
@@ -93,7 +97,7 @@ button {
   background-image: url(../images/nnnoise.svg);
   justify-content: space-between;
   line-height: 40px;
-  border-bottom: 1px #8299FF solid;
+  border-bottom: 1px #8299ff solid;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 0;
@@ -103,8 +107,8 @@ button {
   position: relative;
   z-index: 0;
   height: 40px;
-  width: 40vw;
-  background-color: rgb(255, 243, 133);
+  width: 35vw;
+  background: linear-gradient(90deg, rgba(255,243,143,1) 49%, rgba(255,243,143,0) 100%);
 }
 
 .done {
@@ -128,13 +132,8 @@ button {
   background-image: url(../images/hover.svg);
 }
 
-
 @media screen and (min-width: 627px) and (max-width: 767px) {
-  
-  .highlight { 
-
+  .highlight {
     width: 30vw;
-
   }
-
 }
