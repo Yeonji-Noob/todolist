@@ -44,21 +44,30 @@ let underLine = document.getElementById("underline");
 
 /*------------------------*/
 
-
 // tabs.forEach(menu => menu.addEventListener("click", ))
 
 
+//offsetLeft는 HTMLElement에 속하고, eventTarget에는 없는 속성이라서
+//자꾸 에러가 떴었다.
+// as HTMLElement 붙이는 것으로 해결
 
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) {
     filter(event);
-    let lineDraw = () => {
-      underLine.style.left = event.currentTarget.offsetLeft + "px";
-      underLine.style.width = event.currentTarget.offsetWidth + "px";
-      underLine.style.top = 
-      event.currentTarget.offsetTop + event.currentTarget.offsetHeight -5 + "px";
+    let lineDraw = (style : CSSStyleDeclaration) => {
+      style.left = (event.currentTarget as HTMLElement).offsetLeft + "px";
+      style.width = (event.currentTarget as HTMLElement).offsetWidth + "px";
+      style.top = 
+      (event.currentTarget as HTMLElement).offsetTop + (event.currentTarget as HTMLElement).offsetHeight -5 + "px";
     }
-    lineDraw()
+
+
+    //  'undefined' 형식은 'CSSStyleDeclaration' 형식에 할당할 수 없습니다.ts(2345)
+    // 라는 에러가 뜨기 때문에, if문으로 undefined을 확인시켜준 뒤에 아닌 경우에만
+    // lineDraw를 호출함
+    if (underLine?.style) {
+      lineDraw(underLine.style);
+    }
   });
 }
 
@@ -132,16 +141,16 @@ let render = () => {
         <div class="highlight"></div>
         <div class="done">${list[i].taskContent}</div>
         <div class="check-button">
-          <button onclick="toggle('${list[i].id}')">Check</button>
-          <button onclick="deleteTask('${list[i].id}')">Delete</button>
+          <img onclick="toggle('${list[i].id}')" src="./images//check_button.svg" alt="check">
+          <img onclick="deleteTask('${list[i].id}')" src="./images//delete_button.svg" alt="delete">
         </div>
       </div>`;
     } else {
       resultHTML += `<div class="task">
         <div>${list[i].taskContent}</div>
         <div class="check-button">
-          <button onclick="toggle('${list[i].id}')">Check</button>
-          <button onclick="deleteTask('${list[i].id}')">Delete</button>
+        <img onclick="toggle('${list[i].id}')" src="./images//check_button.svg" alt="check">
+        <img onclick="deleteTask('${list[i].id}')" src="./images//delete_button.svg" alt="delete">
         </div>
       </div>`;
     }

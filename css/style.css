@@ -2,33 +2,52 @@
   margin: 0;
   padding: 0;
   background-color: #ffffff;
-  overflow: hidden;
 }
 
 .background {
-  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23904aff' fill-opacity='0.51'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23904aff' fill-opacity='0.5'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), url("https://stackdiary.com/wp-content/uploads/2022/10/noise_img.png");
+  opacity:1;
 }
 
 .container {
   position: relative;
   z-index: 100;
   background-image: url(../images/nnnoise.svg);
-  width: 1000px;
+  width: 62.5vw;
   top: 20px;
   min-height: 100vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  overflow:hidden;
 }
 
-.container h1 {
+.title_container {
   position: relative;
   top: 10px;
-  font-weight: bold;
   background-color: #8299ff;
   background-image: url(../images/h1.svg);
+  height: 90px;
+}
+
+.title_container .github_link {
+  position: absolute;
+  width: 20px;
+}
+
+.title_container .github_link img {
+  position: absolute;
+  width: 20px;
+}
+
+.title_container h1 {
+  position:absolute;
+  font-weight: bold;
   color: #ffffff;
-  padding: 20px;
+  background-color:#ffffff00;
+  top: 50%;
+  transform: translateY(-50%);
   user-select: none;
+  margin-left: 20px;
 }
 
 .input-area button {
@@ -37,15 +56,17 @@
 }
 
 input {
-  margin-top: 10px;
+  margin-top: 30px;
   height: 30px;
-  width: 25em;
+  width: 40vw;
   border-radius: 3px;
+  font-size: 14px;
+
 }
 
 button {
   color: #ffffff;
-  width: 3.5em;
+  width: 50px;
   height: 30px;
   border-radius: 3px;
   background-image: url(../images/h1.svg);
@@ -53,27 +74,18 @@ button {
   line-height: 25px;
 }
 
-.noise-image {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
-  background-image: url("https://stackdiary.com/wp-content/uploads/2022/10/noise_img.png");
-  background-position: 0px 0px;
-  background-size: auto;
-  opacity: 0.5;
-}
+
+
 
 .task-tabs {
   display: flex;
   border-bottom: 1px #8299ff solid;
-  padding-left: 10px;
+  padding-left: 6px;
 }
 
 .task-tabs div {
   position: relative;
-  padding: 1em;
+  padding: 19px;
   background-image: url(../images/nnnoise.svg);
   cursor: pointer;
   user-select: none;
@@ -85,55 +97,139 @@ button {
   border-bottom: 0px;
   position: absolute;
   z-index: 10;
-  width: 0;
-  left: 22px;
-  top: 183px;
-  padding: 0;
+  width: 0px;
   transition: all 400ms;
 }
 
 .task {
   display: flex;
+  position: relative;
   background-image: url(../images/nnnoise.svg);
   justify-content: space-between;
   line-height: 40px;
   border-bottom: 1px #8299ff solid;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   padding-left: 0;
+  flex-wrap: wrap;
+  text-overflow: ellipsis;
+  font-size:14px;
 }
 
 .highlight {
-  position: relative;
+  position: absolute;
   z-index: 0;
-  height: 40px;
+  height: 50px;
   width: 35vw;
-  background: linear-gradient(90deg, rgba(255,243,143,1) 49%, rgba(255,243,143,0) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 243, 143, 1) 49%,
+    rgba(255, 243, 143, 0) 100%
+  );
 }
 
 .done {
   background-color: transparent;
-  position: absolute;
-  text-decoration: line-through;
-}
-
-.check-button {
-  background-image: url(../images/nnnoise.svg);
-}
-
-.check-button button {
   position: relative;
-  width: 120px;
-  height: 40px;
-  margin-right: 10px;
+  text-decoration: line-through;
+  margin: 5px 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 243, 143, 1) 49%,
+    rgba(255, 243, 143, 0) 100%
+  );
 }
 
-.check-button button:hover {
+/*-------------------------------------*/
+/*--------------체크버튼----------------*/
+/*-------------------------------------*/
+
+/*.check-button {
+  background-image: url(../images/nnnoise.svg);
+}*/
+.check-button {
+  position: relative;
+  width: 90px;
+  height: 50px;
+  margin-right: 5px;
+}
+
+.check-button img {
+  width: 30px;
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.check-button img:hover {
+  scale: 1.1;
+}
+/*.check-button button:hover {
   background-image: url(../images/hover.svg);
-}
+}*/
 
+/*-------------------------------------*/
+/*------------미디어쿼리----------------*/
+/*-------------------------------------*/
 @media screen and (min-width: 627px) and (max-width: 767px) {
   .highlight {
     width: 30vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 320px;
+  }
+
+  input {
+    width: 240px;
+    font-size: 12px;
+  }
+
+  .task {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .highlight {
+    display: none;
+  }
+
+  .task-tabs {
+    justify-content: space-around;
+  }
+
+  .task div {
+    font-size: 12px;
+  }
+
+  #all {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #progress {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #done {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .check-button img {
+    width: 26px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .container {
+    width: 260px;
+  }
+
+  input {
+    width: 180px;
   }
 }
