@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   background-color: #ffffff;
 }
 
@@ -14,7 +15,7 @@
   z-index: 100;
   background-image: url(../images/nnnoise.svg);
   width: 62.5vw;
-  top: 20px;
+  /* top: 20px; */
   min-height: 100vh;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -22,32 +23,53 @@
 }
 
 .title_container {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   top: 10px;
   background-color: #8299ff;
   background-image: url(../images/h1.svg);
   height: 90px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+
 
 .title_container .github_link {
   position: absolute;
-  width: 20px;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  background-image: url(../images/github_link.svg);
+  background-size: contain;
+  background-color: #ffffff00;
+  cursor: pointer;
+  transition: all 500ms;
 }
 
-.title_container .github_link img {
-  position: absolute;
-  width: 20px;
+.title_container .github_link:hover {
+  opacity: 0.5;
+}
+
+.github_link_a {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  background-color: #ffffff00;
 }
 
 .title_container h1 {
-  position:absolute;
+  position:relative;
   font-weight: bold;
   color: #ffffff;
   background-color:#ffffff00;
-  top: 50%;
+  top: 70%;
   transform: translateY(-50%);
   user-select: none;
   margin-left: 20px;
+  font-size: 40px;
 }
 
 .input-area button {
@@ -61,7 +83,6 @@ input {
   width: 40vw;
   border-radius: 3px;
   font-size: 14px;
-
 }
 
 button {
@@ -101,14 +122,18 @@ button {
   transition: all 400ms;
 }
 
+#task-board {
+
+}
+
 .task {
   display: flex;
   position: relative;
   background-image: url(../images/nnnoise.svg);
   justify-content: space-between;
-  line-height: 40px;
+  line-height: 50px;
   border-bottom: 1px #8299ff solid;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 0;
   flex-wrap: wrap;
@@ -132,7 +157,6 @@ button {
   background-color: transparent;
   position: relative;
   text-decoration: line-through;
-  margin: 5px 5px;
   background: linear-gradient(
     90deg,
     rgba(255, 243, 143, 1) 49%,
@@ -144,9 +168,7 @@ button {
 /*--------------체크버튼----------------*/
 /*-------------------------------------*/
 
-/*.check-button {
-  background-image: url(../images/nnnoise.svg);
-}*/
+
 .check-button {
   position: relative;
   width: 90px;
@@ -177,9 +199,14 @@ button {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 630px) {
   .container {
     width: 320px;
+  }
+
+  .title_container h1 {
+    font-size: 30px;
+    top: 75%;
   }
 
   input {
@@ -232,4 +259,27 @@ button {
   input {
     width: 180px;
   }
+}
+
+@media screen and (max-width: 280px){
+
+  /* 갤럭시 폴드 사이즈 */
+
+
+  .title_container h1 {
+    font-size: 25px;
+    top: 80%;
+  }
+
+  input {
+    margin-top: 20px;
+  }
+
+  .task {
+    line-height: 30px;
+  }
+
+ .check-button {
+  height: 30px;
+ }
 }

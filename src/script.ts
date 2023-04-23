@@ -54,6 +54,8 @@ let underLine = document.getElementById("underline");
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) {
     filter(event);
+
+
     let lineDraw = (style : CSSStyleDeclaration) => {
       style.left = (event.currentTarget as HTMLElement).offsetLeft + "px";
       style.width = (event.currentTarget as HTMLElement).offsetWidth + "px";
@@ -70,6 +72,13 @@ for (let i = 0; i < tabs.length; i++) {
     }
   });
 }
+
+
+//위의 함수로는 창의 크기가 변경될 때 마다
+//클릭 위치에서 underline이 남아있어서 보기 안좋다는 단점이 있다.
+
+
+
 
 //필터링 해주는 함수
 let filter = (event: Event) => {
