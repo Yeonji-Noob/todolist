@@ -36,6 +36,18 @@ project 소개
 
 
 -----------
+
+(4/28)
+
+Lighthouse 검사 후 접근성 개선 (98 → 100)
+
+
+![image](https://user-images.githubusercontent.com/121682565/235036336-5e95fcda-636b-4f13-b366-1d69f9e6242e.png)
+
+
+
+
+-----------
 ## 📚 Used Languages
 <p>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"/>
